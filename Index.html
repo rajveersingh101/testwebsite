@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Protected Single Page</title>
+  <style>
+    body { font-family: sans-serif; }
+    #protected-content { display: none; }
+    #error { color: red; }
+  </style>
+</head>
+<body>
+  <div id="login-form">
+    <h2>Enter Password</h2>
+    <input type="password" id="password-input" placeholder="Password" />
+    <button onclick="checkPassword()">Submit</button>
+    <div id="error"></div>
+  </div>
+
+  <div id="protected-content">
+    <h1>Welcome to the Protected Page!</h1>
+    <p>This is the content shown only after entering the correct password.</p>
+  </div>
+
+  <script>
+    const CORRECT_PASSWORD = 'secret123'; // Change this to your desired password
+
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === CORRECT_PASSWORD) {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('protected-content').style.display = 'block';
+      } else {
+        document.getElementById('error').textContent = 'Incorrect password. Try again.';
+      }
+    }
+  </script>
+</body>
+</html>
